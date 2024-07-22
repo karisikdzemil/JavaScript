@@ -3,10 +3,17 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+function getUserNumberinput (){
+    return parseInt(userInput.value);
+}
+
 function add (){
-    currentResult = currentResult + userInput.value;
-    outputResult(currentResult, '');
+    const enteredNumber = getUserNumberinput()
+    let calcDesript = currentResult;    
+    currentResult = currentResult + enteredNumber;
+    outputResult(currentResult, `${calcDesript} + ${enteredNumber}`);
 }
   
 addBtn.addEventListener("click", add);
+console.log('test');
 
