@@ -2,6 +2,7 @@
 
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = [];
 
 function getUserNumberinput() {
   return parseInt(userInput.value);
@@ -15,25 +16,27 @@ function createAndWritteOutput(operator, resultBefCalc, calcNumber) {
 function add() {
   const enteredNumber = getUserNumberinput();
   let initialResult = currentResult;
-  currentResult = currentResult + enteredNumber;
+  currentResult += enteredNumber;
   createAndWritteOutput("+", initialResult, enteredNumber);
+  logEntries.push(enteredNumber);
+  console.log(logEntries);
 }
 function substract() {
   const enteredNumber = getUserNumberinput();
   let initialResult = currentResult;
-  currentResult = currentResult - enteredNumber;
+  currentResult -= enteredNumber;
   createAndWritteOutput("-", initialResult, enteredNumber);
 }
 function multiply() {
   const enteredNumber = getUserNumberinput();
   let initialResult = currentResult;
-  currentResult = currentResult * enteredNumber;
+  currentResult *= enteredNumber;
   createAndWritteOutput("*", initialResult, enteredNumber);
 }
 function divide() {
   const enteredNumber = getUserNumberinput();
   let initialResult = currentResult;
-  currentResult = currentResult / enteredNumber;
+  currentResult /= enteredNumber;
   createAndWritteOutput("/", initialResult, enteredNumber);
 }
 
