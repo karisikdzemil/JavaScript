@@ -1,5 +1,3 @@
-// alert("This is my first javascript code 500. times");
-
 const defaultResult = 0;
 let currentResult = defaultResult;
 let logEntries = [];
@@ -18,7 +16,13 @@ function add() {
   let initialResult = currentResult;
   currentResult += enteredNumber;
   createAndWritteOutput("+", initialResult, enteredNumber);
-  logEntries.push(enteredNumber);
+  const logEntry = {
+    operation: "ADD",
+    prevResult: initialResult,
+    number: enteredNumber,
+    result: currentResult
+  }
+  logEntries.push(logEntry);
   console.log(logEntries);
 }
 function substract() {
@@ -44,4 +48,5 @@ addBtn.addEventListener("click", add);
 subtractBtn.addEventListener("click", substract);
 multiplyBtn.addEventListener("click", multiply);
 divideBtn.addEventListener("click", divide);
+
 
