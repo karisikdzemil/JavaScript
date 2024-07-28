@@ -6,7 +6,7 @@ function getUserNumberinput() {
   return parseInt(userInput.value);
 }
 
-function createAndWritteOutput(operator, resultBefCalc, calcNumber) {
+function createAndWriteOutput(operator, resultBefCalc, calcNumber) {
   const calcDescrition = `${resultBefCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescrition);
 }
@@ -27,24 +27,33 @@ function writeToLog(
   console.log(logEntries);
 }
 
-function calculateResult (calculationType){
-  const enteredNumber = getUserNumberinput();
+function calculateResult(calculationType) {
+    const enteredNumber = getUserNumberinput();
+  if (
+    calculationType !== "ADD" &&
+    calculationType !== "SUBTRACT" &&
+    calculationType !== "MULTIPLY" &&
+    calculationType !== "DIVIDE" ||
+    !enteredNumber
+  ) {
+    return;
+  }
   let initialResult = currentResult;
   let mathOperatior;
-  if(calculationType === "ADD"){
+  if (calculationType === "ADD") {
     currentResult += enteredNumber;
     mathOperatior = "+";
-  }else if (calculationType === "SUBTRACT") {
+  } else if (calculationType === "SUBTRACT") {
     currentResult -= enteredNumber;
     mathOperatior = "-";
-  }else if (calculationType === "MULTIPLY"){
+  } else if (calculationType === "MULTIPLY") {
     currentResult *= enteredNumber;
     mathOperatior = "*";
-  }else if (calculationType === "DIVIDE"){
+  } else if (calculationType === "DIVIDE") {
     currentResult /= enteredNumber;
     mathOperatior = "/";
   }
-  createAndWritteOutput(mathOperatior, initialResult, enteredNumber);
+  createAndWriteOutput(mathOperatior, initialResult, enteredNumber);
   writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
 
@@ -71,7 +80,6 @@ function multiply() {
   // createAndWritteOutput("*", initialResult, enteredNumber);
   // writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult);
   calculateResult("MULTIPLY");
-
 }
 function divide() {
   // const enteredNumber = getUserNumberinput();
@@ -80,11 +88,9 @@ function divide() {
   // createAndWritteOutput("/", initialResult, enteredNumber);
   // writeToLog("DIVIDE", initialResult, enteredNumber, currentResult);
   calculateResult("DIVIDE");
-
 }
 
 addBtn.addEventListener("click", add);
 subtractBtn.addEventListener("click", subtract);
 multiplyBtn.addEventListener("click", multiply);
 divideBtn.addEventListener("click", divide);
-
