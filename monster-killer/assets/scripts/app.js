@@ -53,6 +53,7 @@ function healPlayerHandler (){
     endRound();
 }
 
+// Add finctionality to other button
 attackBtn.addEventListener("click", attackHandler);
 strongAttackBtn.addEventListener("click", strongAttackHandler);
 healBtn.addEventListener("click", healPlayerHandler);
