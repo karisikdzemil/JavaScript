@@ -6,12 +6,22 @@ const HEAL_VALUE = 20;
 let choseMaxLife = 100;
 let currentMonsterHealth = choseMaxLife;
 let currentPlayerHealth = choseMaxLife;
+let hasBonusLife = true;
 
 adjustHealthBars(choseMaxLife);
 
 function endRound (){
+    const initialPlayerHealth = currentPlayerHealth;
     const playerDamage = dealPlayerDamage(MONSTER_ATTACT_VALUE);
     currentPlayerHealth -= playerDamage;
+    
+    if (currentPlayerHealth <= 0 && hasBonusLife){
+        hasBonusLife = false;
+        removeBonusLife();
+        currentPlayerHealth = initialPlayerHealth;
+        setPlayerHealth(initialPlayerHealth);
+        alert("You would dead but the bonus life saved you!")        
+    }
   
     if (currentMonsterHealth <= 0 && currentPlayerHealth >= 0) {
       alert("You won!");
@@ -53,7 +63,7 @@ function healPlayerHandler (){
     endRound();
 }
 
-// Add finctionality to other button
+
 attackBtn.addEventListener("click", attackHandler);
 strongAttackBtn.addEventListener("click", strongAttackHandler);
 healBtn.addEventListener("click", healPlayerHandler);
