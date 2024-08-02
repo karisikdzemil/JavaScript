@@ -45,8 +45,8 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
     case LOG_EVENT_PLAYER_HEAL:
         logEntry.target = "PLAYER";
         break;
-    // case LOG_EVENT_GAME_OVER
-  }
+        // case LOG_EVENT_GAME_OVER
+    }
   //   if (ev === LOG_EVENT_PLAYER_ATTACK) {
   //     logEntry = {
   //       event: ev,
@@ -189,7 +189,26 @@ function healPlayerHandler() {
   endRound();
 }
 function printLogHandler() {
-  console.log(battleLog);
+    for(let i = 0; i < 3; i++){
+        console.log("-----------------");
+    }
+    // for (let i = 10; i > 0;){
+    //     i--;
+    //     console.log(i);
+    // }
+
+    // for(let i = 0;i < battleLog.length; i++){
+    //     console.log(battleLog[i]);
+    // }
+    // for of loop ////////////
+    let i = 0;
+    for (const logEntry of battleLog){
+        console.log(`#${i}`);
+        for (const key in logEntry){
+            console.log(`${key}=> ${logEntry[key]}`);
+        }
+        i++;
+    }
 }
 
 attackBtn.addEventListener("click", attackHandler);
