@@ -53,7 +53,7 @@ const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
 //   return RESULT_COMPUTER_WIN;
 // }
 
-startGameBtn.addEventListener("click",  () => {
+startGameBtn.addEventListener("click", () => {
   if (gameIsRunning) {
     return;
   }
@@ -62,7 +62,9 @@ startGameBtn.addEventListener("click",  () => {
   const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
   const winner = getWinner(computerChoice, playerChoice);
-  let message = `You picked ${playerChoice || DEFAULT_USER_CHOICE}, computer picked ${computerChoice}, therefore you `;
+  let message = `You picked ${
+    playerChoice || DEFAULT_USER_CHOICE
+  }, computer picked ${computerChoice}, therefore you `;
   if (winner === RESULT_DRAW) {
     message = message + `had draw.`;
   } else if (winner === RESULT_PLAYER_WIN) {
@@ -74,32 +76,141 @@ startGameBtn.addEventListener("click",  () => {
   gameIsRunning = false;
 });
 
-// Not related to game 
+// Not related to game
 
 // rest operator
-const sumUp = (resultHandler, ...numbers) => {
-  const validateNumber = (number) =>{
-      return isNaN(number) ? 0 : number;
-  };
+// const combine = (resultHandler, operator, ...numbers) => {
+//   const validateNumber = (number) => {
+//     return isNaN(number) ? 0 : number;
+//   };
 
-  let sum = 0;
-  for (const num of numbers){
-    sum += validateNumber(num);
-  }
-  resultHandler(sum);
+//   let sum = 0;
+//   for (const num of numbers) {
+//     if (operator === "ADD") {
+//       sum += validateNumber(num);
+//     } else {
+//       sum -= validateNumber(num);
+//     }
+//   }
+//   resultHandler(sum);
+// };
+
+// // const substractUp = (resultHandler, ...numbers) => {
+// //   let sum = 0;
+// //   for (const num of numbers) {
+// //     sum -= num;
+// //   }
+// //   resultHandler(sum);
+// // };
+
+// const showResult = (textMessage, result) => {
+//   alert(textMessage + " " + result);
+// };
+// combine(
+//   showResult.bind(this, "The result after adding all numbers is: "),
+//   "ADD",
+//   2,
+//   5,
+//   "abjvo",
+//   6,
+//   3,
+//   7,
+//   4,
+//   7,
+//   8
+// );
+// combine(
+//   showResult.bind(this, "The result after adding all numbers is: "),
+//   "ADD",
+//   2,
+//   5,
+//   23,
+//   6,
+//   3,
+//   7,
+//   4,
+//   7,
+//   8
+// );
+// combine(
+//   showResult.bind(this, "The result after substrackting all numbers is: "),
+//   2,
+//   5,
+//   3,
+//   6,
+//   3,
+//   7,
+//   4,
+//   7,
+//   8
+// );
+
+// code wars solution
+
+// function flattenAndSort(array) {
+//   // Step 1: Flatten the array
+//   let flattenedArray = [];
+//   for (let i = 0; i < array.length; i++) {
+//     for (let j = 0; j < array[i].length; j++) {
+//       flattenedArray.push(array[i][j]);
+//     }
+//   }
+
+//   // Step 2: Sort the flattened array using Bubble Sort
+//   for (let i = 0; i < flattenedArray.length; i++) {
+//     for (let j = 0; j < flattenedArray.length - 1; j++) {
+//       if (flattenedArray[j] > flattenedArray[j + 1]) {
+//         // Swap elements
+//         let temp = flattenedArray[j];
+//         flattenedArray[j] = flattenedArray[j + 1];
+//         flattenedArray[j + 1] = temp;
+//       }
+//     }
+//   }
+
+//   return flattenedArray;
+// }
+
+// // Test the function with the provided example
+// const inputArray = [[3, 2, 1], [4, 6, 5], [9, 7, 8]];
+// const result = flattenAndSort(inputArray);
+// console.log(result); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// function disemvowel(str) {
+//   let str2 = "";
+//   for (let i = 0; i < str.length; i++) {
+//     if (
+//       str[i] !== "a" &&
+//       str[i] !== "e" &&
+//       str[i] !== "i" &&
+//       str[i] !== "o" &&
+//       str[i] !== "u" &&
+//       str[i] !== "A" &&
+//       str[i] !== "E" &&
+//       str[i] !== "I" &&
+//       str[i] !== "O" &&
+//       str[i] !== "U"
+//     ) {
+//       str2 = str2 + str[i];
+//     }
+//   }
+//   str = str2;
+//   return str;
+// }
+
+// console.log(disemvowel("This website is for losers LOL!"));
+
+
+function squareDigits(num){
+   let newNum = "";
+   num = num.toString();
+   for(n of num){
+    n = parseInt(n);
+    newNum += n * n;
+    newNum = newNum.toString();
+   }
+   num = parseInt(newNum);
+   console.log(num);
+  return 0;
 }
-
-const substractUp = function() {
-  let sum = 0;
-  for (const num of arguments){
-    sum -= num;
-  }
-  return sum;
-}
-
-const showResult = (result) =>{
-  alert("The result after adding all numbers is: " + result);
-}
-sumUp(showResult, 2, 5, 'abjvo', 6, 3, 7, 4, 7, 8);
-console.log(substractUp(2, 5, 3, 6, 3, 7, 4, 7, 8));
-
+squareDigits(3243);
