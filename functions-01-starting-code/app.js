@@ -200,17 +200,53 @@ startGameBtn.addEventListener("click", () => {
 
 // console.log(disemvowel("This website is for losers LOL!"));
 
+// function squareDigits(num){
+//    let newNum = "";
+//    num = num.toString();
+//    for(n of num){
+//     n = parseInt(n);
+//     newNum += n * n;
+//     newNum = newNum.toString();
+//    }
+//    num = parseInt(newNum);
+//    console.log(num);
+//   return 0;
+// }
+// squareDigits(2112);
 
-function squareDigits(num){
-   let newNum = "";
-   num = num.toString();
-   for(n of num){
-    n = parseInt(n);
-    newNum += n * n;
-    newNum = newNum.toString();
-   }
-   num = parseInt(newNum);
-   console.log(num);
-  return 0;
-}
-squareDigits(3243);
+// function dnaStrand(dna) {
+//   let newDna = "";
+//   for (d of dna) {
+//     if (d === "A") {
+//       newDna = newDna + "T";
+//     } else if (d === "T") {
+//       newDna = newDna + "A";
+//     } else if (d === "C") {
+//       newDna = newDna + "G";
+//     } else if (d === "G") {
+//       newDna = newDna + "C";
+//     }
+//   }
+//   return newDna;
+// }
+// dnaStrand("GTAT");
+
+
+// function validatePIN (pin) {
+//   let strPin = pin.toString();
+//   if(strPin.length !== 4 && strPin.length !== 6){
+//     return false;
+//   }else{
+//   for(num of strPin){
+//     num = +num;
+//     if(isNaN(num)){
+//       return false;
+//     }else if(num < 0){
+//       return false;
+//     }else{
+//       return true;
+//     }
+//   }
+//   }
+// }
+// console.log(validatePIN());
