@@ -44,27 +44,54 @@
 // HTMLFormControlsCollection.log(hobbies);
 
 
-const testResults = [1, 5.3, 1.5, 10.99, -5, 10];
-// const storedResults = testResults.splice(2);
-const storedResults = testResults.concat([3.99, 2])
+// const testResults = [1, 5.3, 1.5, 10.99, -5, 10];
+// // const storedResults = testResults.splice(2);
+// const storedResults = testResults.concat([3.99, 2])
 
-testResults.push(5.91);
+// testResults.push(5.91);
 
-console.log(testResults, storedResults);    
-console.log(testResults.indexOf(1.5));
+// console.log(testResults.includes(10.99));
 
-const personData = [{name: "Max"}, {name: "Manuel"}];
-console.log(personData.indexOf({name: "Manuel"}));
+// console.log(testResults, storedResults);    
+// console.log(testResults.indexOf(1.5));
 
-const manuel = personData.find((person, idx, persons)=>{
-    return person.name === "Manuel";
-}) 
+// const personData = [{name: "Max"}, {name: "Manuel"}];
+// console.log(personData.indexOf({name: "Manuel"}));
 
-manuel.name = "Anna";
+// const manuel = personData.find((person, idx, persons)=>{
+//     return person.name === "Manuel";
+// }) 
 
-console.log(manuel, personData);
+// manuel.name = "Anna";
 
-const maxIndex = personData.findIndex((person, idx, persons)=>{
-    return person.name === "Max";
+// console.log(manuel, personData);
+
+// const maxIndex = personData.findIndex((person, idx, persons)=>{
+//     return person.name === "Max";
+// })
+// console.log(maxIndex);
+
+
+// const prices = [10.99, 5.99, 3.99, 6.59];
+// const tax = 0.19;
+// const taxAdjustPrices = [];
+
+// // for (const price of prices){
+// //     taxAdjustPrices.push(price * (1 + tax));
+// // }
+
+// prices.forEach((price, idx, prices)=>{
+//         // taxAdjustPrices.push(price * (1 + tax));
+//         const priceObj = {index: idx, taxAdjustPrices:price * (1 + tax)};
+//         taxAdjustPrices.push(priceObj);
+// })
+// console.log(taxAdjustPrices);
+
+const prices = [10.99, 5.99, 3.99, 6.59];
+const tax = 0.19;
+
+const taxAdjustPrices = prices.map((price, idx, prices)=>{
+        const priceObj = {index: idx, taxAdjustPrices:price * (1 + tax)};
+        return priceObj;
 })
-console.log(maxIndex);
+console.log(prices, taxAdjustPrices);
