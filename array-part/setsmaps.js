@@ -30,11 +30,11 @@
 // }
 // console.log(personalData.size);
 
-let person = {name: "Max"};
-const persons = new WeakSet();
-persons.add(person);
+// let person = {name: "Max"};
+// const persons = new WeakSet();
+// persons.add(person);
 
-// some operations 
-person = null;
+// // some operations 
+// person = null;
 
-console.log(persons);
+// console.log(persons);
