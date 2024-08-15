@@ -12,4 +12,4 @@ console.log(reduceArr);
 
 const findMax = [Math.max(...arr), Math.min(...arr)]
    const [MaxNum, MinNum] = findMax;
-console.log(findMax)
+console.log(findMax);
