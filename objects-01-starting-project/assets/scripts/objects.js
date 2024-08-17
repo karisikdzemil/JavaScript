@@ -51,4 +51,4 @@ const addMovieHandler = () => {
   renderMovies();
 };
 
-addMovieBtn.addEventListener("click", addMovieHandler);
+// addMovieBtn.addEventListener("click", addMovieHandler);
