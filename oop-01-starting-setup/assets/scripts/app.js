@@ -1,8 +1,8 @@
 class Product {
-  title = "DEFAULT";
-  imageUrl;
-  description;
-  price;
+  // title = 'DEFAULT';
+  // imageUrl;
+  // description;
+  // price;
 
   constructor(title, image, desc, price) {
     this.title = title;
@@ -12,45 +12,59 @@ class Product {
   }
 }
 
-console.log(new Product());
+class ProductItem {
+  constructor(product) {
+    this.product = product;
+  }
 
-const productList = {
-  products: [
+  render() {
+    const prodEl = document.createElement('li');
+    prodEl.className = 'product-item';
+    prodEl.innerHTML = `
+        <div>
+          <img src="${this.product.imageUrl}" alt="${this.product.title}" >
+          <div class="product-item__content">
+            <h2>${this.product.title}</h2>
+            <h3>\$${this.product.price}</h3>
+            <p>${this.product.description}</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      `;
+    return prodEl;
+  }
+}
+
+class ProductList {
+  products = [
     new Product(
-      "A Pillow",
-      "https://linensociety.com/cdn/shop/products/heirloom-pillow_14294b09-8232-4d5d-a305-022b802669ab_1400x.jpg?v=1584402804",
-      19.99,
-      "A soft pillow!"
+      'A Pillow',
+      'https://cdn.thewirecutter.com/wp-content/media/2023/01/bedpillows-2048px-9987.jpg?auto=webp&quality=75&width=1024',
+      'A soft pillow!',
+      19.99
     ),
     new Product(
-        "A Carpet",
-        "https://images.jdmagicbox.com/quickquotes/images_main/-92mbg0w7.jpg",
-        89.99,
-        "A carpet which you might like - or not."
-      )
-  ],
+      'A Carpet',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ardabil_Carpet.jpg/397px-Ardabil_Carpet.jpg',
+      'A carpet which you might like - or not.',
+      89.99
+    )
+  ];
+
+  constructor() {}
+
   render() {
-    const renderHook = document.getElementById("app");
-    const prodList = document.createElement("ul");
-    prodList.className = "product-list";
-    for (prod of this.products) {
-      const prodEl = document.createElement("li");
-      prodEl.className = "product-item";
-      prodEl.innerHTML = `
-        <div>
-        <img src="${prod.imageUrl}" alt="${prod.title}">
-        <div class="product-item__content">
-        <h2>${prod.title}</h2>
-        <h3>${prod.price}</h3>
-        <p>$${prod.description}</p>
-        <button>Add to Cart</button>
-        </div>
-         </div>
-        `;
+    const renderHook = document.getElementById('app');
+    const prodList = document.createElement('ul');
+    prodList.className = 'product-list';
+    for (const prod of this.products) {
+      const productItem = new ProductItem(prod);
+      const prodEl = productItem.render();
       prodList.append(prodEl);
     }
-
     renderHook.append(prodList);
-  },
-};
+  }
+}
+
+const productList = new ProductList();
 productList.render();
