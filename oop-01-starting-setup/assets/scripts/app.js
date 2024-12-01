@@ -12,7 +12,34 @@ class Product {
   }
 }
 
-class ShoppingCart {
+class ElementAttribute {
+  constructor(attrName, AttrValue){
+    this.name = attrName;
+    this.value = AttrValue;
+  }
+}
+
+class Component{
+
+  constructor(renderHookId){
+    this.hookId = renderHookId;
+  }
+  createRootElement(tag, cssClasses, attributes){
+    const rootElement = document.createElement(tag);
+    if(cssClasses){
+      rootElement.className = cssClasses;
+    }
+    if(attributes && attributes.length > 0){
+      for(const attr of attributes){
+        rootElement.setAttribute(attr.name, attr.value);
+      }
+    }
+  document.getElementById(this.hookId).append(rootElement);
+  return rootElement;
+  }
+}
+
+class ShoppingCart extends Component{
   items = [];
 
   set cartItems(value){
@@ -27,6 +54,10 @@ class ShoppingCart {
     return sum;
   }
 
+  constructor(renderHookId){
+    super(renderHookId);
+  }
+
   addProduct(product){
     const uptadetItems = [...this.items];
     uptadetItems.push(product);
@@ -34,18 +65,16 @@ class ShoppingCart {
   }
 
   render (){
-    const cartEl = document.createElement("section");
+    const cartEl = this.createRootElement("section", "cart");
     cartEl.innerHTML = `
       <h2>Total: /$${0}</h2>
       <button>Order Now!</button>
     `;
-    cartEl.className = 'cart';
     this.totalOutput = cartEl.querySelector("h2");
-    return cartEl;
   }
 }
 
-class ProductItem {
+class ProductItem extends Component{
   constructor(product) {
     this.product = product;
   }
@@ -54,8 +83,7 @@ class ProductItem {
    App.addProductToCard(this.product);
   }
   render() {
-    const prodEl = document.createElement('li');
-    prodEl.className = 'product-item';
+    const prodEl = this.createRootElement('li', 'product-item');
     prodEl.innerHTML = `
         <div>
           <img src="${this.product.imageUrl}" alt="${this.product.title}" >
@@ -69,7 +97,6 @@ class ProductItem {
       `;
       const addCardButton = prodEl.querySelector("button");
       addCardButton.addEventListener("click", this.addToCard.bind(this));
-    return prodEl;
   }
 }
 
@@ -107,12 +134,11 @@ class ProductItem {
     render(){
       const renderHook = document.getElementById('app');
 
-      this.cart = new ShoppingCart();
+      this.cart = new ShoppingCart("app");
       const cartEl = this.cart.render();
       const productList = new ProductList();
       const prodListEl = productList.render();
 
-      renderHook.append(cartEl);
       renderHook.append(prodListEl);
     }
   }
