@@ -167,6 +167,14 @@ class DOMHelper {
       finishedProjectsList.setSwitchHandlerFunction(
         activeProjectsList.addProject.bind(activeProjectsList)
       );
+      this.startAnalytics();
+    }
+
+    static startAnalytics(){
+        const analyticsScript = document.createElement("script");
+        analyticsScript.src = "assets/scripts/analytics.js";
+        analyticsScript.defer = true;
+        document.head.append(analyticsScript);
     }
   }
   
