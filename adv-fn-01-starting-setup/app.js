@@ -25,3 +25,36 @@ function printHobbies(h){
     console.log(h);
 }
 printHobbies(hobbies);
+
+// Factory functionst 
+
+let multiplier = 1.1;
+
+function createTaxCalculator(tax){
+    function calculateTax(amount){
+        return amount * tax * multiplier;
+    }
+    return calculateTax
+}
+
+const calculateVatAmount = createTaxCalculator(0.19);
+const calculateIncomeTaxAmount = createTaxCalculator(0.25);
+
+multiplier = 1.2;
+
+console.log(calculateVatAmount(100));
+console.log(calculateIncomeTaxAmount(200));
+
+let userName = "Max";
+
+function greetUser(){
+    // let name = "Anna";
+    console.log("Hi ", name);
+}
+
+let name = "Maximilian";
+
+userName = "Manuel";
+
+greetUser();
+
